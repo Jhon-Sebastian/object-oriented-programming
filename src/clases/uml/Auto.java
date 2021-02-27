@@ -1,6 +1,6 @@
 package clases.uml;
 
-public class Auto {
+public class Auto implements Comparable<Auto>{
 
     //Atributos
     private int id;
@@ -106,9 +106,30 @@ public class Auto {
                 + "\n Color = " + this.color.getColor()
                 + "\n Motor = " + this.motor.getTipo()
                 + "\n Capacidad Estanque = " + this.estanque.getCapacidad()
-                + "\n Propietario = " + this.conductor.toString()
+                + "\n Propietario = " + this.conductor
                 + "\n # Ruedas = " + this.ruedas.length;
 
     }
 
+    //Metodo comparable sobreescrito y modificado a nuestras necesidades
+    @Override
+    public int compareTo(Auto a) {
+
+        /*  Hacemos un cast para obtener el auto que se pasa por argumento;
+            Ya no usamos el cast ya que le decimos a la clase Comparable<Auto> que vamos a usar
+            Datos de tipo Automovil, a esto se le
+            conoce como Generics
+        */
+
+        //Auto a = (Auto) o;
+
+        //Validamos si el fabricante de OBJETO 1 es menor en a tabla UNICODE
+        // con el fabricante OBJETO 2
+        return this.fabricante.compareTo(a.getFabricante());
+    }
+
+    @Override
+    public String toString(){
+        return "\n"+this.conductor;
+    }
 }
